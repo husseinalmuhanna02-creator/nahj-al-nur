@@ -20,6 +20,8 @@ jobs:
         run: npm run build
       - name: Build APK
         run: |
+          mkdir -p www
+          cp -r dist/* www/
           npx cap sync
           cd android && chmod +x gradlew && ./gradlew assembleDebug
       - name: Upload APK
