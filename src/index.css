@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Noto Sans Arabic", ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: "Amiri", serif;
+  --font-serif: "Playfair Display", "Times New Roman", serif;
+  
+  --color-natural-bg: #FDFBF7;
+  --color-natural-dark: #1B4332;
+  --color-natural-accent: #B45309;
+  --color-natural-text: #2D2D2D;
+  --color-natural-border: #E5E0D5;
+  --color-natural-soft: #FAF7F2;
+
+  --color-dark-bg: #0F172A;
+  --color-dark-card: #1E293B;
+  --color-dark-text: #F1F5F9;
+  --color-dark-accent: #F59E0B;
+  --color-dark-border: #334155;
+  --color-dark-soft: #1E293B;
+}
+
+@layer base {
+  body {
+    @apply bg-natural-bg text-natural-text font-sans transition-colors duration-300;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .dark body {
+    @apply bg-dark-bg text-dark-text;
+  }
+
+  /* Support for shadcn-like dark utility if needed, but we'll manually apply for now */
+}
+
+@theme {
+  --animate-spin-slow: spin 8s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.font-arabic {
+  font-family: var(--font-arabic);
+}
+
+.font-serif-header {
+  font-family: var(--font-serif);
+}
+

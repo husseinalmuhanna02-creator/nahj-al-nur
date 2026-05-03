@@ -1,0 +1,13 @@
+{
+  "name": "Nahj al-Nur | نهج النور",
+  "description": "An integrated Islamic Shia application featuring prayer times (Shia methods), Tasbih al-Zahra, Hijri calendar, and a library of supplications.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "Prayer Times",
+    "Tasbih Counter",
+    "Hijri Calendar",
+    "Supplications Library"
+  ]
+}
