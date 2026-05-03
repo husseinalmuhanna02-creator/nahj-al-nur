@@ -12,7 +12,9 @@ jobs:
         with:
           node-version: 18
       - name: Install Dependencies
-        run: npm install
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install
       - name: Build Web Project
         run: npm run build
       - name: Build APK
