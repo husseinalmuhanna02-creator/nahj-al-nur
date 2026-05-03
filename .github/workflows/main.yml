@@ -23,6 +23,7 @@ jobs:
         run: |
           mkdir -p www
           cp -r dist/* www/
+          echo '{"appId":"com.nahjalnur.app","appName":"Nahj Al Nur","webDir":"dist"}' > capacitor.config.json
           npx cap add android
           npx cap sync
           cd android && chmod +x gradlew && ./gradlew assembleDebug
