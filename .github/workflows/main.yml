@@ -32,15 +32,13 @@ jobs:
           cp -r dist/* www/
           echo '{"appId":"com.nahjalnur.app","appName":"Nahj Al Nur","webDir":"dist"}' > capacitor.config.json
           
-          # إنشاء المجلدات الضرورية للأيقونة
           mkdir -p assets
-          cp icon.png assets/icon-only.png
           cp icon.png assets/icon.png
           
           npx cap add android
           
-          # توليد الأيقونات بشكل قسري
-          npx capacitor-assets generate --android --icon-path assets/icon.png
+          # الأمر المصحح لتوليد الأيقونات
+          npx capacitor-assets generate --android
           
           npx cap sync android
           cd android && chmod +x gradlew && ./gradlew assembleDebug
