@@ -11,6 +11,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+
+      # الخطوة الجديدة: تزويد السيرفر بـ Java 21
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
       - name: Fix NPM Bug & Install
         run: |
           rm -rf node_modules package-lock.json
