@@ -12,7 +12,6 @@ jobs:
         with:
           node-version: 22
 
-      # الخطوة الجديدة: تزويد السيرفر بـ Java 21
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
@@ -24,7 +23,7 @@ jobs:
           rm -rf node_modules package-lock.json
           npm cache clean --force
           npm install
-          npm install @capacitor/android
+          npm install @capacitor/android @capacitor/assets
       - name: Build Web Project
         run: npm run build
       - name: Build APK
@@ -32,8 +31,18 @@ jobs:
           mkdir -p www
           cp -r dist/* www/
           echo '{"appId":"com.nahjalnur.app","appName":"Nahj Al Nur","webDir":"dist"}' > capacitor.config.json
+          
+          # إنشاء المجلدات الضرورية للأيقونة
+          mkdir -p assets
+          cp icon.png assets/icon-only.png
+          cp icon.png assets/icon.png
+          
           npx cap add android
-          npx cap sync
+          
+          # توليد الأيقونات بشكل قسري
+          npx capacitor-assets generate --android --icon-path assets/icon.png
+          
+          npx cap sync android
           cd android && chmod +x gradlew && ./gradlew assembleDebug
       - name: Upload APK
         uses: actions/upload-artifact@v4
